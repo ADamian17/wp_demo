@@ -1,0 +1,46 @@
+import React, { useEffect } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../../recoil/atom';
+
+/* == Internal Modules == */
+import MainNav from '../Primary-nav';
+import { formtModalsToObj } from '../../utils';
+
+
+const DefaultLayout = ({ children }) => {
+  const [modals, setModals] = useRecoilState(modalState);
+
+  const WP_MODAL_QUERY = graphql`
+  {
+    allWpModal {
+      edges {
+        node {
+          title
+          slug
+        }
+      }
+    }
+  }
+  `;
+
+  const { allWpModal } = useStaticQuery(WP_MODAL_QUERY);
+
+  useEffect(() => {
+    const modalsMap = allWpModal && formtModalsToObj(allWpModal.edges);
+
+    setModals(modalsMap);
+  }, []);
+
+  return (
+    <div className='default-layout'>
+      <header>
+        <MainNav />
+      </header>
+
+      {children}
+    </div>
+  )
+}
+
+export default DefaultLayout
