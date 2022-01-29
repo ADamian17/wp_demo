@@ -16,8 +16,15 @@ const DefaultLayout = ({ children }) => {
     allWpModal {
       edges {
         node {
-          title
           slug
+          modalContent {
+            modalCopy
+            modalCta
+            modalImage {
+              altText
+              sourceUrl
+            }
+          }
         }
       }
     }

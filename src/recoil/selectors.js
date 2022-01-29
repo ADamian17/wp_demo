@@ -10,6 +10,7 @@ export const modalSelector = selector({
     const nextState = {
       ...prevModalsState,
       [val]: {
+        ...prevModalsState[val],
         show: !prevModalsState[val].show
       },
     };

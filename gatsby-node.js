@@ -17,8 +17,9 @@ exports.createPages = async ({ graphql, actions }) => {
           slug
           template {
             ... on WpDefaultTemplate {
-              modal {
-                modalTarget
+              templateName
+              modalTrigger {
+                triggerId
               }
             }
           }
