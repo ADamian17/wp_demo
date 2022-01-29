@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { useRecoilState } from 'recoil';
-import { modalState } from '../../recoil/atom';
+import { useSetRecoilState } from 'recoil';
+import { modalState } from '../../recoil/atoms';
 
 /* == Internal Modules == */
 import MainNav from '../Primary-nav';
@@ -9,7 +9,7 @@ import { formtModalsToObj } from '../../utils';
 
 
 const DefaultLayout = ({ children }) => {
-  const [modals, setModals] = useRecoilState(modalState);
+  const setModals = useSetRecoilState(modalState);
 
   const WP_MODAL_QUERY = graphql`
   {

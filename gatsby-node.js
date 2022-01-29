@@ -15,6 +15,13 @@ exports.createPages = async ({ graphql, actions }) => {
           id
           title
           slug
+          template {
+            ... on WpDefaultTemplate {
+              modal {
+                modalTarget
+              }
+            }
+          }
         }
       }
     }
@@ -28,7 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `${slug}`,
       component: template,
       context: {
-        title
+        ...edge.node
       }
     })
   });
