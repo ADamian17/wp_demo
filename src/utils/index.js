@@ -6,7 +6,9 @@
 
 export const formtModalsToObj = (modalArr) => {
   return modalArr.reduce((acc, modal) => {
-    acc[modal.node.slug] = { ...modal.node, show: false };
+    acc[modal.node.slug] = { 
+      ...modal.node,
+    };
 
     return acc;
   }, {});

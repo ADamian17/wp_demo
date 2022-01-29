@@ -24,6 +24,7 @@ const DefaultLayout = ({ children }) => {
               altText
               sourceUrl
             }
+            showModal
           }
         }
       }

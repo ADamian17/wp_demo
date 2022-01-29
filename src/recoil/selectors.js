@@ -1,22 +1,34 @@
 import { selector } from 'recoil';
-import { modalState } from './atoms';
+import { modalState, setTimeoutState } from './atoms';
 
 export const modalSelector = selector({
   key: 'modalSelector',
   get: ({get}) => get(modalState),
-  set: ({get, set}, val) => { 
+  set: ({get, set}, modal) => { 
     const prevModalsState = { ...get(modalState)};
     
     const nextState = {
       ...prevModalsState,
-      [val]: {
-        ...prevModalsState[val],
-        show: !prevModalsState[val].show
+      [modal]: {
+        ...prevModalsState[modal],
+        modalContent: {
+          ...prevModalsState[modal].modalContent,
+          showModal: !prevModalsState[modal].modalContent.showModal
+        }
       },
     };
 
-    console.log('modal selector', nextState);
+    console.log('%c modal selector from recoil :)', 'color: aqua; font-size: 14px', nextState);
 
     return set(modalState, nextState);
   }
+});
+
+export const setTimeoutSelector = selector({
+  key: 'setTimeoutSelector',
+  get: ({get}) => get(setTimeoutState),
+  set: ({set}, handlerFunc ) => {
+    console.log({handlerFunc});
+    return set(setTimeoutState, handlerFunc)
+  } 
 })
