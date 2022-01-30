@@ -28,7 +28,6 @@ export const setTimeoutSelector = selector({
   key: 'setTimeoutSelector',
   get: ({get}) => get(setTimeoutState),
   set: ({set}, handlerFunc ) => {
-    console.log({handlerFunc});
     return set(setTimeoutState, handlerFunc)
   } 
 })

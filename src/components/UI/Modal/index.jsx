@@ -18,10 +18,12 @@ const Modal = ({ modalSlug }) => {
     <>
       {modalDetails &&
         <div className={`modal ${modalDetails.modalContent.showModal ? 'modal--active' : ''}`}>
-          <h1>{modalDetails.modalContent.modalCopy}</h1>
-          <input placeholder='Email' />
-          <button>{modalDetails.modalContent.modalCta}</button>
-          <button onClick={handleClick}>close modal</button>
+          <div className="modal__content">
+            <button onClick={handleClick}>close modal</button>
+            <h1>{modalDetails.modalContent.modalCopy}</h1>
+            <input placeholder='Email' />
+            <button>{modalDetails.modalContent.modalCta}</button>
+          </div>
         </div>
       }
     </>

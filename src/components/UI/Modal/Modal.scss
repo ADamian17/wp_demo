@@ -1,7 +1,26 @@
 .modal {
-  display: none;
+  background-color: #00000072;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 
   &--active {
-    display: inline-block;
+    display: flex;
+  }
+
+  &__content {
+    background-color: #fff;
+    min-height: 200px;
+    max-width: 630px;
+    width: 87%;
+    padding: 0 24px;
+    display: grid;
+    align-content: center;
+    grid-auto-rows: min-content;
   }
 }
