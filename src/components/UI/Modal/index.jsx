@@ -19,10 +19,12 @@ const Modal = ({ modalSlug }) => {
       {modalDetails &&
         <div className={`modal ${modalDetails.modalContent.showModal ? 'modal--active' : ''}`}>
           <div className="modal__content">
-            <button onClick={handleClick}>close modal</button>
+            <button className="modal__close-btn" onClick={handleClick}>close modal</button>
             <h1>{modalDetails.modalContent.modalCopy}</h1>
-            <input placeholder='Email' />
-            <button>{modalDetails.modalContent.modalCta}</button>
+            <div className="input-container">
+              <input placeholder='Email' />
+              <button>{modalDetails.modalContent.modalCta}</button>
+            </div>
           </div>
         </div>
       }

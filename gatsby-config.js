@@ -6,7 +6,7 @@ module.exports = {
   plugins: [{
     resolve: 'gatsby-source-wordpress',
     options: {
-      "url": " http://wpspdemo.local/graphql"
+      "url": "http://wpdemo.gonmartdevs.com/graphql"
     }
   }, "gatsby-plugin-sass", "gatsby-plugin-react-helmet", {
     resolve: 'gatsby-plugin-manifest',

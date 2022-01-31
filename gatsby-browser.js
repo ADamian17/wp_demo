@@ -1,6 +1,6 @@
 const React = require("react");
-const GobalStateWrapper = require('./src/GlobalStateWrapper').default;
-const PageElementWrapper = require('./src/PageElementWrapper').default;
+const GobalStateWrapper = require('./src/components/GlobalStateWrapper').default;
+const PageElementWrapper = require('./src/components/PageElementWrapper').default;
 
 // Wraps every page in a component
 exports.wrapPageElement = ({ element, props }) => {
