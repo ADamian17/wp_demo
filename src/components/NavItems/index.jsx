@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 const NavItems = ({ menuItems }) => {
   const menuItemsList = menuItems.map(menuItem => {
