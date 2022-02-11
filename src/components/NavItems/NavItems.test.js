@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NavItems from './index';
+import NavItems from '.';
 
 const DEFAULT_PROPS = {
   menuItems: []

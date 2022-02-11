@@ -16,7 +16,8 @@ const Modal = ({ modalSlug }) => {
 
   return (
     <>
-      {modalDetails &&
+      {
+        modalDetails &&
         <div className={`modal ${modalDetails.modalContent.showModal ? 'modal--active' : ''}`}>
           <div className="modal__content">
             <button className="modal__close-btn" onClick={handleClick}>close modal</button>
