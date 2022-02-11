@@ -1,13 +1,8 @@
 /* eslint-disable testing-library/await-async-query */
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import EnzymeAdaptor from '@wojtekmaj/enzyme-adapter-react-17';
+import { shallow } from 'enzyme';
 
 import NavItems from './index';
-
-Enzyme.configure({ 
-  adapter: new EnzymeAdaptor() 
-});
 
 const DEFAULT_PROPS = {
   menuItems: []
