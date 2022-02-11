@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
+import NavItems from '../NavItems';
 
 const MainNav = () => {
 
@@ -19,22 +20,8 @@ const MainNav = () => {
 
   const { wpMenu: { menuItems } } = useStaticQuery(query);
 
-  const menuItemsList = menuItems.nodes.map(menuItem => {
-    return (
-      <Link
-        key={menuItem.id}
-        to={menuItem.path}>
-        {menuItem.label}
-      </Link>
-    )
-  })
-
   return (
-    <ul>
-      {
-        menuItems && menuItemsList
-      }
-    </ul>
+    menuItems && <NavItems menuItems={menuItems.nodes} />
   )
 }
 
