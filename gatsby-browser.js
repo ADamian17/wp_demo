@@ -1,16 +1,15 @@
 const React = require("react");
+const {RecoilRoot} = require("recoil")
 const GobalStateWrapper = require('./src/components/GlobalStateWrapper').default;
-const PageElementWrapper = require('./src/components/PageElementWrapper').default;
-
-// Wraps every page in a component
-exports.wrapPageElement = ({ element, props }) => {
-  return <PageElementWrapper {...props}>{element}</PageElementWrapper>
-}
+const { useModalContextProvider } = require('./src/hooks');
 
 exports.wrapRootElement = ({ element }) => {
+  const ModalProvider = useModalContextProvider()
   return (
-    <GobalStateWrapper>
-      {element}
-    </GobalStateWrapper>
+    <RecoilRoot>
+      <ModalProvider>
+        {element}
+      </ModalProvider>
+    </RecoilRoot>
   )
 }

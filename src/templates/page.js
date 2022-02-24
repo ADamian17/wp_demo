@@ -22,7 +22,7 @@ const Page = ({ pageContext }) => {
       <button onClick={() => setModal(pageContext.template.modalTrigger.triggerId)}>Modal trigger for {pageContext.template.modalTrigger.triggerId}</button>
 
       <Modal modalSlug={pageContext.template.modalTrigger.triggerId} />
-      {/* {
+      {
         modalDetails && modalDetails.show ? 
         <div>
           <h1>{modalDetails.modalContent.modalCopy}</h1> 
@@ -30,7 +30,7 @@ const Page = ({ pageContext }) => {
           <button>{modalDetails.modalContent.modalCta}</button> 
         </div> : 
         ''
-      } */}
+      }
     </DefaultLayout>
   )
 }
