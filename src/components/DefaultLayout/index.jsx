@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { useSetRecoilState } from 'recoil';
-import { modalState } from '../../recoil/atoms';
+import { useSetRecoilState, useResetRecoilState } from 'recoil';
+import { modalState, pageCountState } from '../../recoil/atoms';
 
 /* == Internal Modules == */
 import MainNav from '../Primary-nav';
 import { formtModalsToObj } from '../../utils';
 
-
 const DefaultLayout = ({ children }) => {
   const setModals = useSetRecoilState(modalState);
+  const resetPageCount = useResetRecoilState(pageCountState);
 
   const WP_MODAL_QUERY = graphql`
   {
@@ -38,6 +38,14 @@ const DefaultLayout = ({ children }) => {
     const modalsMap = allWpModal && formtModalsToObj(allWpModal.edges);
 
     setModals(modalsMap);
+
+    const handlePageCount = () => resetPageCount();
+
+    window.addEventListener('beforeunload', handlePageCount)
+
+    return () => {
+      window.removeEventListener('beforeunload', handlePageCount)
+    }
   }, []);
 
   return (

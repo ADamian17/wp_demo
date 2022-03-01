@@ -9,11 +9,34 @@ const Page = ({ pageContext }) => {
   const setModal = useSetRecoilState(modalSelector);
   const setTimeoutHandler = useSetRecoilState(setTimeoutSelector);
 
-  useEffect(() => {
-    const handleShowModal = () => {
-      setModal(pageContext.template.modalTrigger.triggerId)
+  const handleMouseLeave = (event) => {
+    if (event.clientY <= 0 ||
+      event.clientX <= 0 ||
+      (event.clientX >= window.innerWidth ||
+        event.clientY >= window.innerHeight
+      )
+    ) {
+      if (pageContext.template.modalTrigger.triggerId) {
+        setModal(pageContext.template.modalTrigger.triggerId)
+      }
     }
-    setTimeoutHandler(setTimeout(handleShowModal, 2000))
+  };
+
+  useEffect(() => {
+    if (pageContext.template.modalTrigger.triggerId) {
+      const handleShowModal = () => {
+        setModal(pageContext.template.modalTrigger.triggerId)
+      }
+      
+      setTimeoutHandler(setTimeout(handleShowModal, 2000))
+    }
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    }
+
   }, [])
 
   return (
@@ -22,15 +45,6 @@ const Page = ({ pageContext }) => {
       <button onClick={() => setModal(pageContext.template.modalTrigger.triggerId)}>Modal trigger for {pageContext.template.modalTrigger.triggerId}</button>
 
       <Modal modalSlug={pageContext.template.modalTrigger.triggerId} />
-      {/* {
-        modalDetails && modalDetails.show ? 
-        <div>
-          <h1>{modalDetails.modalContent.modalCopy}</h1> 
-          <input placeholder='Email' />
-          <button>{modalDetails.modalContent.modalCta}</button> 
-        </div> : 
-        ''
-      } */}
     </DefaultLayout>
   )
 }
