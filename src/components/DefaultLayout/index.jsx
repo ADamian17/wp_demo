@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+
 import { useSetRecoilState, useResetRecoilState } from 'recoil';
 import { modalState, pageCountState } from '../../recoil/atoms';
+
+import ModalsQueries from '../../StaticQueries/Modals.query';
 
 /* == Internal Modules == */
 import MainNav from '../Primary-nav';
@@ -11,41 +13,20 @@ const DefaultLayout = ({ children }) => {
   const setModals = useSetRecoilState(modalState);
   const resetPageCount = useResetRecoilState(pageCountState);
 
-  const WP_MODAL_QUERY = graphql`
-  {
-    allWpModal {
-      edges {
-        node {
-          slug
-          modalContent {
-            modalCopy
-            modalCta
-            modalImage {
-              altText
-              sourceUrl
-            }
-            showModal
-          }
-        }
-      }
-    }
-  }
-  `;
-
-  const { allWpModal } = useStaticQuery(WP_MODAL_QUERY);
+  const modals = ModalsQueries();
 
   useEffect(() => {
-    const modalsMap = allWpModal && formtModalsToObj(allWpModal.edges);
+    const modalsMap = formtModalsToObj(modals);
 
     setModals(modalsMap);
 
-    const handlePageCount = () => resetPageCount();
+    // const handlePageCount = () => resetPageCount();
 
-    window.addEventListener('beforeunload', handlePageCount)
+    // window.addEventListener('beforeunload', handlePageCount)
 
-    return () => {
-      window.removeEventListener('beforeunload', handlePageCount)
-    }
+    // return () => {
+    //   window.removeEventListener('beforeunload', handlePageCount)
+    // }
   }, []);
 
   return (

@@ -31,10 +31,10 @@ const Page = ({ pageContext }) => {
       setTimeoutHandler(setTimeout(handleShowModal, 2000))
     }
 
-    document.addEventListener('mouseleave', handleMouseLeave);
+    // document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      // document.removeEventListener('mouseleave', handleMouseLeave);
     }
 
   }, [])
