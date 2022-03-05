@@ -5,6 +5,11 @@ export const modalState = atom({
   default: {}
 });
 
+export const modalsState = atom({
+  key: 'modalsState',
+  default: null
+});
+
 export const setTimeoutState = atom({
   key: 'setTimeoutState',
   default: null

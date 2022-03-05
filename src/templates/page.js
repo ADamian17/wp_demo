@@ -28,7 +28,7 @@ const Page = ({ pageContext }) => {
         setModal(pageContext.template.modalTrigger.triggerId)
       }
       
-      setTimeoutHandler(setTimeout(handleShowModal, 2000))
+      // setTimeoutHandler(setTimeout(handleShowModal, 2000))
     }
 
     // document.addEventListener('mouseleave', handleMouseLeave);

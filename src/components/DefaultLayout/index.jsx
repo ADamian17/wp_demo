@@ -1,10 +1,7 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 
-import { INITIAL_STATE, modalReducer } from '../../reducers/modal/modal.reducer';
-import { setModalsAction } from '../../reducers/modal/modal.actions';
-
-import { useSetRecoilState, useResetRecoilState } from 'recoil';
-import { modalState, pageCountState } from '../../recoil/atoms';
+import { useSetRecoilState, useResetRecoilState, useRecoilValue, useRecoilState } from 'recoil';
+import { modalState, pageCountState, modalsState } from '../../recoil/atoms';
 
 import ModalsQueries from '../../StaticQueries/Modals.query';
 
@@ -14,19 +11,23 @@ import { formtModalsToObj } from '../../utils';
 import { useModalState } from '../../hooks/useRootWrapper';
 
 const DefaultLayout = ({ children }) => {
-  const testing = useModalState()
-  console.log({ testing });
 
   const setModals = useSetRecoilState(modalState);
   const resetPageCount = useResetRecoilState(pageCountState);
 
+  const [modalsList, setModalsState] = useRecoilState(modalsState);
+
   const modals = ModalsQueries();
+  const modals2 = useModalState(modals)
 
   useEffect(() => {
     const modalsMap = formtModalsToObj(modals);
 
     setModals(modalsMap);
+    setModalsState(modals2)
   }, []);
+
+  console.log({ modalsList });
 
   return (
     <div className='default-layout'>
