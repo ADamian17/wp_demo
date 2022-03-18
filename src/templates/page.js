@@ -4,6 +4,7 @@ import DefaultLayout from '../components/DefaultLayout';
 import { useSetRecoilState } from 'recoil';
 import { modalSelector, setTimeoutSelector } from '../recoil/selectors';
 import Modal from '../components/UI/Modal';
+import PostTemplate from '../components/NewLetter';
 
 const Page = ({ pageContext }) => {
   const setModal = useSetRecoilState(modalSelector);
@@ -42,6 +43,8 @@ const Page = ({ pageContext }) => {
   return (
     <DefaultLayout>
       <h1>{pageContext.title}</h1>
+      <PostTemplate />
+      
       <button onClick={() => setModal(pageContext.template.modalTrigger.triggerId)}>Modal trigger for {pageContext.template.modalTrigger.triggerId}</button>
 
       <Modal modalSlug={pageContext.template.modalTrigger.triggerId} />
