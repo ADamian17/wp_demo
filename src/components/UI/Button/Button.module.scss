@@ -1,0 +1,15 @@
+.btn {
+  border: none;
+
+  &__primary {
+    background-color: blue;
+  }
+
+  &__success {
+    background-color: green;
+  }
+
+  &__danger {
+    background-color: red;
+  }
+}
